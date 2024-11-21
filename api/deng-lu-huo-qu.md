@@ -10,10 +10,11 @@ icon: arrow-right-to-bracket
 
 **Headers**
 
-| Name          | Value                                            |
-| ------------- | ------------------------------------------------ |
-| Content-Type  | `application/json`                               |
-| Authorization | `Bearer <`[`获取令牌方法`](ling-pai-chuang-jian.md)`>` |
+| Name                   | Value                                            |
+| ---------------------- | ------------------------------------------------ |
+| Content-Type           | `application/json`                               |
+| Authorization          | `Bearer <`[`获取令牌方法`](ling-pai-chuang-jian.md)`>` |
+| gateway-identification | 49ba59abbe56e057                                 |
 
 **Query**
 
