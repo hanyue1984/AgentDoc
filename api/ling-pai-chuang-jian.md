@@ -58,7 +58,7 @@ class Agents {
 // 示例用法
 const agents = new Agents();
 const data = "Hello, World!";
-const key = '2fdc826ed2d966e2f3fca09516446f75'; // 16字节
+const key = '2fdc826ed2d966e2f3fca09516446f75'; // 32字节
 const iv = 'xdm2fl24e0m3yo9c'; // 16字节
 
 const encryptedData = agents.encrypt(data, key, iv);
@@ -104,7 +104,7 @@ class Agents:
 if __name__ == "__main__":
     agents = Agents()
     data = b"Hello, World!"
-    key = b'2fdc826ed2d966e2f3fca09516446f75'  # 16字节
+    key = b'2fdc826ed2d966e2f3fca09516446f75'  # 32字节
     iv = b'xdm2fl24e0m3yo9c'  # 16字节
 
     encrypted_data = agents.encrypt(data, key, iv)
@@ -154,7 +154,7 @@ class Agents {
 // 示例用法
 $agents = new Agents();
 $data = "Hello, World!";
-$key = '2fdc826ed2d966e2f3fca09516446f75'; // 16字节
+$key = '2fdc826ed2d966e2f3fca09516446f75'; // 32字节
 $iv = 'xdm2fl24e0m3yo9c'; // 16字节
 
 $encryptedData = $agents->encrypt($data, $key, $iv);
@@ -231,7 +231,7 @@ public class Agents {
         try {
             Agents agents = new Agents();
             byte[] data = "Hello, World!".getBytes(StandardCharsets.UTF_8);
-            byte[] key = "2fdc826ed2d966e2f3fca09516446f75".getBytes(StandardCharsets.UTF_8); // 16字节
+            byte[] key = "2fdc826ed2d966e2f3fca09516446f75".getBytes(StandardCharsets.UTF_8); // 32字节
             byte[] iv = "xdm2fl24e0m3yo9c".getBytes(StandardCharsets.UTF_8); // 16字节
 
             byte[] encryptedData = agents.encrypt(data, key, iv);
