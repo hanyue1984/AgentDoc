@@ -26,10 +26,9 @@ icon: rotate-left
 
 **Headers**
 
-| Name          | Value                                        |
-| ------------- | -------------------------------------------- |
-| Content-Type  | `application/json`                           |
-| Authorization | `Bearer <`[`令牌`](ling-pai-chuang-jian.md)`>` |
+| Name         | Value              |
+| ------------ | ------------------ |
+| Content-Type | `application/json` |
 
 **Body**
 
