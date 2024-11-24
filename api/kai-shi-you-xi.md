@@ -4,7 +4,7 @@ icon: volleyball
 
 # 开始游戏
 
-<mark style="color:green;">`GET`</mark> /games/v1/StartGame
+游戏<mark style="color:green;">`GET`</mark> /games/v1/StartGame
 
 \<Description of the endpoint>
 
@@ -18,10 +18,10 @@ icon: volleyball
 
 **Query**
 
-| Name     | Type   | Description      | 示例    |
-| -------- | ------ | ---------------- | ----- |
-| `gameId` | string | Name of the user | 49    |
-| `lang`   | string | Age of the user  | en-US |
+| Name     | Type   | Description | 示例    |
+| -------- | ------ | ----------- | ----- |
+| `gameId` | string | 游戏ID        | 49    |
+| `lang`   | string | 语言          | en-US |
 
 **Response**
 
