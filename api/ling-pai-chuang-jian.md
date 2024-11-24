@@ -78,64 +78,50 @@ console.log(`Decrypted Data: ${decryptedData}`);
 {% tab title="Python" %}
 {% code lineNumbers="true" %}
 ```python
-import json
 import base64
-from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
-from cryptography.hazmat.backends import default_backend
+import json
 import time
-
-class Data:
-    def __init__(self, account, uid, time, username, wallet):
-        self.account = account
-        self.uid = uid
-        self.time = time
-        self.username = username
-        self.wallet = wallet
+from Crypto.Cipher import AES
+from Crypto.Util.Padding import pad, unpad
 
 class Agents:
-    @staticmethod
-    def encrypt(data, key, iv):
-        backend = default_backend()
-        cipher = Cipher(algorithms.AES(key), modes.CBC(iv), backend=backend)
-        encryptor = cipher.encryptor()
+    def __init__(self):
+        self.block_size = AES.block_size
 
-        # 填充数据
-        padded_data = Agents.pkcs7_padding(data)
-
-        # 加密数据
-        ciphertext = encryptor.update(padded_data) + encryptor.finalize()
-
+    # Encrypt 使用 AES-128-CBC 加密数据
+    def encrypt(self, data, key, iv):
+        cipher = AES.new(key, AES.MODE_CBC, iv)
+        padded_data = pad(data, self.block_size)
+        ciphertext = cipher.encrypt(padded_data)
         return base64.b64encode(ciphertext).decode('utf-8')
 
-    @staticmethod
-    def pkcs7_padding(data):
-        block_size = algorithms.AES.block_size // 8
-        padding = block_size - (len(data) % block_size)
-        padtext = bytes([padding] * padding)
-        return data + padtext
+    # Decrypt 使用 AES-128-CBC 解密数据
+    def decrypt(self, data, key, iv):
+        decoded_data = base64.b64decode(data)
+        cipher = AES.new(key, AES.MODE_CBC, iv)
+        plaintext = cipher.decrypt(decoded_data)
+        return unpad(plaintext, self.block_size).decode('utf-8')
 
-def main():
-    current_time = int(time.time() * 1e9)
-    print(f"time: {current_time}")
-
-    data = Data(
-        account="1723205701015@jjserver.com",
-        uid="110",
-        time=str(current_time),
-        username="测试1",
-        wallet=100
-    )
+if __name__ == "__main__":
+    data = {
+        "account": "1723205701015@jjserver.com",
+        "uid": "110",
+        "time": str(int(time.time() * 1000)),
+        "username": "测试1",
+        "wallet": 100.0
+    }
 
     key = b"2fdc826ed2d966e2f3fca09516446f75"
     iv = b"xdm2fl24e0m3yo9c"
 
-    json_data = json.dumps(data.__dict__).encode('utf-8')
     agent = Agents()
+    json_data = json.dumps(data).encode('utf-8')
+
     encrypted_data = agent.encrypt(json_data, key, iv)
     print(f"Encrypted Data: {encrypted_data}")
 
-if __name__ == "__main__":
-    main()
+    decrypted_data = agent.decrypt(encrypted_data, key, iv)
+    print(f"Decrypted Data: {decrypted_data}")
 
 ```
 {% endcode %}
