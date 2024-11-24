@@ -144,124 +144,73 @@ if __name__ == "__main__":
 {% tab title="PHP" %}
 {% code lineNumbers="true" %}
 ```php
-package main
+<?php
+class Agents {
+    private $blockSize = 16;
 
-import (
-	"bytes"
-	"crypto/aes"
-	"crypto/cipher"
-	"encoding/base64"
-	"encoding/json"
-	"errors"
-	"fmt"
-	"time"
-)
+    // Encrypt 使用 AES-128-CBC 加密数据
+    public function encrypt($data, $key, $iv) {
+        $paddedData = $this->pkcs7Padding($data, $this->blockSize);
+        $ciphertext = openssl_encrypt($paddedData, 'AES-128-CBC', $key, OPENSSL_RAW_DATA, $iv);
+        return base64_encode($ciphertext);
+    }
 
-type Data struct {
-	Account  string  `json:"account"`
-	UID      string  `json:"uid"`
-	Time     string  `json:"time"`
-	Username string  `json:"username"`
-	Wallet   float64 `json:"wallet"`
-}
-type Agents struct {
-}
+    // Decrypt 使用 AES-128-CBC 解密数据
+    public function decrypt($data, $key, $iv) {
+        $decodedData = base64_decode($data);
+        $plaintext = openssl_decrypt($decodedData, 'AES-128-CBC', $key, OPENSSL_RAW_DATA, $iv);
+        return $this->pkcs7Unpadding($plaintext, $this->blockSize);
+    }
 
-// Encrypt 使用 AES-128-CBC 加密数据
-func (a *Agents) Encrypt(data, key, iv []byte) ([]byte, error) {
-	block, err := aes.NewCipher(key)
-	if err != nil {
-		return nil, err
-	}
+    // pkcs7Padding 使用 PKCS#7 填充数据
+    private function pkcs7Padding($data, $blockSize) {
+        $padding = $blockSize - (strlen($data) % $blockSize);
+        $padtext = str_repeat(chr($padding), $padding);
+        return $data . $padtext;
+    }
 
-	// 使用 CBC 模式加密
-	mode := cipher.NewCBCEncrypter(block, iv)
+    // pkcs7Unpadding 去除 PKCS#7 填充
+    private function pkcs7Unpadding($data, $blockSize) {
+        $length = strlen($data);
+        if ($length == 0) {
+            throw new Exception("Input data is empty");
+        }
 
-	// 填充数据
-	paddedData := pkcs7Padding(data)
+        $padding = ord($data[$length - 1]);
+        if ($padding > $length || $padding > $blockSize) {
+            throw new Exception("Invalid padding");
+        }
 
-	// 创建缓冲区
-	ciphertext := make([]byte, len(paddedData))
-	mode.CryptBlocks(ciphertext, paddedData)
+        for ($i = 0; $i < $padding; $i++) {
+            if (ord($data[$length - $padding + $i]) != $padding) {
+                throw new Exception("Invalid padding");
+            }
+        }
 
-	return []byte(base64.StdEncoding.EncodeToString(ciphertext)), nil
-}
-
-// pkcs7Padding 使用 PKCS#7 填充数据
-func pkcs7Padding(data []byte) []byte {
-	padding := aes.BlockSize - len(data)%aes.BlockSize
-	padtext := bytes.Repeat([]byte{byte(padding)}, padding)
-	return append(data, padtext...)
+        return substr($data, 0, $length - $padding);
+    }
 }
 
-// Decrypt 使用 AES-128-CBC 解密数据
-func (a *Agents) Decrypt(data []byte, key, iv []byte) ([]byte, error) {
-	block, err := aes.NewCipher(key)
-	if err != nil {
-		return nil, err
-	}
-	// 解码数据
-	data, err = base64.StdEncoding.DecodeString(string(data))
-	if err != nil {
-		return nil, err
-	}
-	// 使用 CBC 模式解密
-	mode := cipher.NewCBCDecrypter(block, iv)
+$data = [
+    'account' => '1723205701015@jjserver.com',
+    'uid' => '110',
+    'time' => time(),
+    'username' => '测试1',
+    'wallet' => 100
+];
 
-	// 创建缓冲区
-	plaintext := make([]byte, len(data))
-	mode.CryptBlocks(plaintext, data)
+$key = '2fdc826ed2d966e2f3fca09516446f75';
+$iv = 'xdm2fl24e0m3yo9c';
 
-	// 去除填充
-	unpaddedData, err := pkcs7Unpadding(plaintext)
-	if err != nil {
-		return nil, err
-	}
+$agent = new Agents();
+$jsonData = json_encode($data);
 
-	return unpaddedData, nil
-}
+$encryptedData = $agent->encrypt($jsonData, $key, $iv);
+echo "Encrypted Data: " . $encryptedData . "\n";
 
-// pkcs7Unpadding 去除 PKCS#7 填充
-func pkcs7Unpadding(data []byte) ([]byte, error) {
-	length := len(data)
-	if length == 0 {
-		return nil, errors.New("input data is empty")
-	}
-
-	padding := int(data[length-1])
-	if padding > length || padding > aes.BlockSize {
-		return nil, errors.New("invalid padding")
-	}
-
-	for i := 0; i < padding; i++ {
-		if data[length-padding+i] != byte(padding) {
-			return nil, errors.New("invalid padding")
-		}
-	}
-
-	return data[:length-padding], nil
-}
-
-func main() {
-	Time := time.Now().UnixNano()
-	fmt.Printf("time:%d\n", Time)
-	data := Data{
-		Account:  "1723205701015@jjserver.com",
-		UID:      "110",
-		Time:     fmt.Sprintf("%d", Time),
-		Username: "测试1",
-		Wallet:   100,
-	}
-	Key := "2fdc826ed2d966e2f3fca09516446f75"
-	IV := "xdm2fl24e0m3yo9c"
-	jsonData, _ := json.Marshal(data)
-	var agent Agents
-	encryptedData, _ := agent.Encrypt(jsonData, []byte(Key), []byte(IV))
-	fmt.Printf("Encrypted Data: %s\n", encryptedData)
-
-	decryptedData, _ := agent.Decrypt(encryptedData, []byte(Key), []byte(IV))
-	fmt.Printf("Decrypted Data: %s\n", string(decryptedData))
-}
+$decryptedData = $agent->decrypt($encryptedData, $key, $iv);
+echo "Decrypted Data: " . $decryptedData . "\n";
+?>
 
 ```
 {% endcode %}
