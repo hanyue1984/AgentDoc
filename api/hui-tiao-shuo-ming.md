@@ -72,5 +72,6 @@ icon: rotate-left
 | net\_win   | float  | 收益          |
 | business   | string | 业务          |
 | game\_id   | int    | 游戏ID        |
+| time       | int    | 时间戳         |
 
 该Data需要接收后用<mark style="color:red;">**AES-128-CBC**</mark> 进行解密成json字符串后才可以读取
