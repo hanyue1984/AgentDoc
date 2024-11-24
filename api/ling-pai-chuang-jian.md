@@ -387,3 +387,7 @@ LHgsTGbF+GdhOS4lQSn3p72mumuptCzGzOTN0sqTD9R7efiVwvgIP8jzN4TZICkg8b+PMNrtJNvkIgI+
 
 把以上数据用`Bearer 拼接上在协议头中加入到`Authorization中
 
+{% hint style="info" %}
+<mark style="color:orange;">注意:以上方法请不要放在客户端或者网页中避免您得Key跟IV丢失</mark>
+{% endhint %}
+
