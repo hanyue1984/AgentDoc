@@ -534,6 +534,6 @@ Decrypted Data: {"account":"1723205701015@jjserver.com","uid":"110","time":"1732
 把以上数据用`Bearer 拼接上在协议头中加入到`Authorization中
 
 {% hint style="info" %}
-<mark style="color:orange;">注意:以上方法请不要放在客户端或者网页中避免您得Key跟IV丢失</mark>
+<mark style="color:orange;">注意:以上方法请不要放在客户端或者网页中避免您得Key跟IV丢失,请妥善在自己服务器保存令牌,这个是当前用户的身份,服务器发送的回调也以这个令牌为依据判断是贵平台的哪个用户</mark>
 {% endhint %}
 
