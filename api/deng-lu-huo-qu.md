@@ -18,9 +18,7 @@ icon: arrow-right-to-bracket
 
 **Query**
 
-| 定义        | 类型     | 描述                 | 示例                         |
-| --------- | ------ | ------------------ | -------------------------- |
-| `agentId` | string | 账号ID也就是登录后左上角显示的账号 | 1723205701015@jjserver.com |
+<table><thead><tr><th width="132">定义</th><th width="79">类型</th><th>描述</th><th>示例</th></tr></thead><tbody><tr><td><code>agentId</code></td><td>string</td><td>账号ID也就是登录后左上角显示的账号</td><td>1723205701015@jjserver.com</td></tr></tbody></table>
 
 **Response**
 

@@ -64,14 +64,6 @@ icon: rotate-left
 
 ## Data说明
 
-| Name       | Type   | Description |
-| ---------- | ------ | ----------- |
-| order\_no  | string | 订单号         |
-| total\_bet | float  | 投注金额        |
-| total\_win | float  | 输赢金额        |
-| net\_win   | float  | 收益          |
-| business   | string | 业务          |
-| game\_id   | int    | 游戏ID        |
-| time       | int    | 时间戳         |
+<table><thead><tr><th width="242">Name</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td>order_no</td><td>string</td><td>订单号</td></tr><tr><td>total_bet</td><td>float</td><td>投注金额</td></tr><tr><td>total_win</td><td>float</td><td>输赢金额</td></tr><tr><td>net_win</td><td>float</td><td>收益</td></tr><tr><td>business</td><td>string</td><td>业务</td></tr><tr><td>game_id</td><td>int</td><td>游戏ID</td></tr><tr><td>time</td><td>int</td><td>时间戳</td></tr></tbody></table>
 
 该Data需要接收后用<mark style="color:red;">**AES-128-CBC**</mark> 进行解密成json字符串后才可以读取
