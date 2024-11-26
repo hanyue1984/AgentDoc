@@ -14,6 +14,7 @@
 * [用户管理](hou-tai-shi-yong-shou-ce/yong-hu-guan-li.md)
 * [日志-钱包流水](hou-tai-shi-yong-shou-ce/ri-zhi-qian-bao-liu-shui.md)
 * [日志-钱包日报](hou-tai-shi-yong-shou-ce/ri-zhi-qian-bao-ri-bao.md)
+* [日志-游戏日志](hou-tai-shi-yong-shou-ce/ri-zhi-you-xi-ri-zhi.md)
 * [系统设置](hou-tai-shi-yong-shou-ce/xi-tong-she-zhi.md)
 
 ## API

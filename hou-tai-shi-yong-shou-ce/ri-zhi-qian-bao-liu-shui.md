@@ -4,7 +4,7 @@ icon: water
 
 # 日志-钱包流水
 
-
+说明
 
 <figure><img src="../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
 
@@ -14,8 +14,7 @@ icon: water
 
 ## 状态说明
 
-|                    状态                    |            说明            |
-| :--------------------------------------: | :----------------------: |
-| <mark style="color:green;">同步钱包成功</mark> |  说明回调地址调用成功已经通知了代理商的服务器  |
-|  <mark style="color:red;">同步钱包失败</mark>  | 说明回调地址4次调用失败,需要检查回调服务器接口 |
-|    <mark style="color:blue;">成功</mark>   |    暂未调用回调地址,这种情况会很少出现    |
+|                    状态                    |       说明       |
+| :--------------------------------------: | :------------: |
+| <mark style="color:green;">同步钱包成功</mark> |   说明该笔订单没有异常   |
+|  <mark style="color:red;">同步钱包失败</mark>  | 说明该笔订单存在异常需要排查 |
