@@ -18,10 +18,7 @@ icon: volleyball
 
 **Query**
 
-| Name     | Type   | Description | 示例    |
-| -------- | ------ | ----------- | ----- |
-| `gameId` | string | 游戏ID        | 49    |
-| `lang`   | string | 语言          | en-US |
+<table><thead><tr><th width="128">Name</th><th width="83">Type</th><th>Description</th><th>示例</th></tr></thead><tbody><tr><td><code>gameId</code></td><td>string</td><td>游戏ID</td><td>49</td></tr><tr><td><code>agentId</code></td><td>string</td><td>代理商账号<a href="../zhun-bei-gong-zuo/quickstart.md">&#x3C;查看位置></a></td><td>173xxxxxxxx@jjserver.com</td></tr></tbody></table>
 
 **Response**
 
