@@ -10,11 +10,11 @@ icon: volleyball
 
 **Headers**
 
-| Name                   | Value                                        |
-| ---------------------- | -------------------------------------------- |
-| Content-Type           | `application/json`                           |
-| Authorization          | `Bearer <`[`令牌`](ling-pai-chuang-jian.md)`>` |
-| gateway-identification | 49ba59abbe56e057                             |
+| Name                   | Value                                                |
+| ---------------------- | ---------------------------------------------------- |
+| Content-Type           | `application/json`                                   |
+| Authorization          | `Bearer <`[`令牌`](ling-pai-chuang-jian.md)`>需要每次请求生成` |
+| gateway-identification | 49ba59abbe56e057                                     |
 
 **Query**
 
