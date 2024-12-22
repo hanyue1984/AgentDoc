@@ -67,3 +67,7 @@ icon: rotate-left
 <table><thead><tr><th width="242">Name</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td>order_no</td><td>string</td><td>订单号</td></tr><tr><td>total_bet</td><td>float</td><td>投注金额</td></tr><tr><td>total_win</td><td>float</td><td>输赢金额</td></tr><tr><td>net_win</td><td>float</td><td>收益</td></tr><tr><td>business</td><td>string</td><td>业务</td></tr><tr><td>game_id</td><td>int</td><td>游戏ID</td></tr><tr><td>time</td><td>int</td><td>时间戳</td></tr></tbody></table>
 
 该Data需要接收后用<mark style="color:red;">**AES-128-CBC**</mark> 进行解密成json字符串后才可以读取
+
+{% hint style="warning" %}
+<mark style="color:orange;">特别说明</mark>:接到<mark style="color:purple;">**Body**</mark>数据后需要先反序列化<mark style="color:purple;">**JSON**</mark>,然后在取**Data**进行解密.
+{% endhint %}
