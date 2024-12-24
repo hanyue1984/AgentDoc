@@ -23,7 +23,7 @@ description: 查询地址为主动查询代理服务器的用户钱包方法,可
 
 **Query**
 
-<table><thead><tr><th width="569">Name</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td>uid</td><td>string</td><td>用户ID</td></tr></tbody></table>
+<table><thead><tr><th width="256">Name</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td>uid</td><td>string</td><td>用户ID</td></tr></tbody></table>
 
 **Response**
 
@@ -57,5 +57,3 @@ description: 查询地址为主动查询代理服务器的用户钱包方法,可
 ```
 {% endtab %}
 {% endtabs %}
-
-## Data说明
