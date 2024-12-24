@@ -42,13 +42,7 @@ icon: rotate-left
 
 **Response**
 
-| Name    | Type    | Description          |
-| ------- | ------- | -------------------- |
-| wallet  | float64 | 成功收到回调后扣费后得金额,进行钱包同步 |
-| time    | int64   | 秒时间戳                 |
-| uid     | string  | 用户ID                 |
-| success | bool    | 是否相应成功是否有错误          |
-| error   | string  | 错误信息                 |
+<table><thead><tr><th width="249">Name</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td>wallet</td><td>float64</td><td>成功收到回调后扣费后得金额,进行钱包同步</td></tr><tr><td>time</td><td>int64</td><td>秒时间戳</td></tr><tr><td>uid</td><td>string</td><td>用户ID</td></tr><tr><td>success</td><td>bool</td><td>是否相应成功是否有错误</td></tr><tr><td>error</td><td>string</td><td>错误信息</td></tr></tbody></table>
 
 {% tabs %}
 {% tab title="200" %}
@@ -63,7 +57,7 @@ icon: rotate-left
 ```
 {% endtab %}
 
-{% tab title="400" %}
+{% tab title="200" %}
 ```json
 {
   "success":false

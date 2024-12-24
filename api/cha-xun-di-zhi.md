@@ -23,19 +23,17 @@ description: 查询地址为主动查询代理服务器的用户钱包方法,可
 
 **Query**
 
-| Name | Type   | Description |
-| ---- | ------ | ----------- |
-| uid  | string | 用户ID        |
+<table><thead><tr><th width="569">Name</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td>uid</td><td>string</td><td>用户ID</td></tr></tbody></table>
 
 **Response**
 
-| Name    | Type    | Description          |
-| ------- | ------- | -------------------- |
-| wallet  | float64 | 成功收到回调后扣费后得金额,进行钱包同步 |
-| time    | int64   | 秒时间戳                 |
-| uid     | string  | 用户ID                 |
-| success | bool    | 是否相应成功是否有错误          |
-| error   | string  | 错误信息                 |
+| Name    | Type    | Description |
+| ------- | ------- | ----------- |
+| wallet  | float64 | 当前用户钱包数量    |
+| time    | int64   | 秒时间戳        |
+| uid     | string  | 用户ID        |
+| success | bool    | 是否相应成功是否有错误 |
+| error   | string  | 错误信息        |
 
 {% tabs %}
 {% tab title="200" %}
@@ -43,7 +41,7 @@ description: 查询地址为主动查询代理服务器的用户钱包方法,可
 {
   "success":true,
   "uid": "001",//为用户登录得时候令牌中得uid
-  "wallet": 4078.90,//为用户收到扣费回调后扣除成功后得钱数,如果没有数据则判定同步失败
+  "wallet": 4078.90,//
   "time":1609459200,//秒时间戳
   "error":""
 }
