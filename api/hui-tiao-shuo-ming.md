@@ -42,19 +42,23 @@ icon: rotate-left
 
 **Response**
 
-| Name   | Type    | Description          |
-| ------ | ------- | -------------------- |
-| wallet | float64 | 成功收到回调后扣费后得金额,进行钱包同步 |
-| time   | int64   | 秒时间戳                 |
-| uid    | string  | 用户ID                 |
+| Name    | Type    | Description          |
+| ------- | ------- | -------------------- |
+| wallet  | float64 | 成功收到回调后扣费后得金额,进行钱包同步 |
+| time    | int64   | 秒时间戳                 |
+| uid     | string  | 用户ID                 |
+| success | bool    | 是否相应成功是否有错误          |
+| error   | string  | 错误信息                 |
 
 {% tabs %}
 {% tab title="200" %}
 ```json
 {
+  "success":true,
   "uid": "001",//为用户登录得时候令牌中得uid
   "wallet": 4078.90,//为用户收到扣费回调后扣除成功后得钱数,如果没有数据则判定同步失败
-  "time":1609459200//秒时间戳
+  "time":1609459200,//秒时间戳
+  "error":""
 }
 ```
 {% endtab %}
@@ -62,7 +66,8 @@ icon: rotate-left
 {% tab title="400" %}
 ```json
 {
-  "error": "Invalid request"//内容随机只要返回得状态不是200 那么就认定为失败
+  "success":false
+  "error": "Invalid request"//错误信息
 }
 ```
 {% endtab %}
