@@ -23,3 +23,4 @@
 * [登录获取](api/deng-lu-huo-qu.md)
 * [开始游戏](api/kai-shi-you-xi.md)
 * [回调说明](api/hui-tiao-shuo-ming.md)
+* [查询地址](api/cha-xun-di-zhi.md)
