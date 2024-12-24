@@ -441,7 +441,7 @@ Decrypted Data: {"account":"1723205701015@jjserver.com","uid":"110","time":"1732
 | -------- | ------ | ------------------------------------------------ |
 | account  | string | 账号名<[见创建账号](../zhun-bei-gong-zuo/quickstart.md)> |
 | uid      | string | 自己平台得用户ID                                        |
-| time     | string | 毫秒时间戳                                            |
+| time     | string | 秒时间戳                                             |
 | username | string | 可以随意也可以保存成用户昵称,方便后期在后台查找用户                       |
 | wallet   | float  | 当前平台用户钱包余额,这里如果没有用户会创建一个这个用户钱包,钱包余额以代理商为准        |
 

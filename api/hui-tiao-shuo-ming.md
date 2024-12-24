@@ -4,7 +4,7 @@ icon: rotate-left
 
 # 回调说明
 
-投注金额订单号回调地址设置请参考 [<系统设置>](../hou-tai-shi-yong-shou-ce/xi-tong-she-zhi.md)
+毫秒投注金额订单号回调地址设置请参考 [<系统设置>](../hou-tai-shi-yong-shou-ce/xi-tong-she-zhi.md)
 
 回调会在用户Spin点击后发送当前游戏数据给代理商进行同步内容见Data说明.调用失败会最多3次尝试
 
@@ -37,18 +37,24 @@ icon: rotate-left
 | --------- | ------ | ------------------------------------------------------- |
 | order\_no | string | 订单号                                                     |
 | data      | string | 订单详细数据(<mark style="color:red;">**AES-128-CBC**</mark>) |
-| time      | int64  | 时间戳                                                     |
+| time      | int64  | 秒时间戳                                                    |
 | uid       | string | 用户ID                                                    |
 
 **Response**
+
+| Name   | Type    | Description          |
+| ------ | ------- | -------------------- |
+| wallet | float64 | 成功收到回调后扣费后得金额,进行钱包同步 |
+| time   | int64   | 秒时间戳                 |
+| uid    | string  | 用户ID                 |
 
 {% tabs %}
 {% tab title="200" %}
 ```json
 {
-  "id": 1,//这里内容随意,只要返回状态是200就认为是成功
-  "name": "John",
-  "age": 30
+  "uid": "001",//为用户登录得时候令牌中得uid
+  "wallet": 4078.90,//为用户收到扣费回调后扣除成功后得钱数,如果没有数据则判定同步失败
+  "time":1609459200//秒时间戳
 }
 ```
 {% endtab %}
