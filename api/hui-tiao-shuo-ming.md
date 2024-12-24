@@ -20,7 +20,7 @@ icon: rotate-left
 
 ## 以下接口只是演示需要在自己平台服务器上
 
-<mark style="color:green;">`POST`</mark> `/Demo/notice`
+<mark style="color:green;">`POST`</mark> `/test/Demo/notice`
 
 \<Description of the endpoint>
 
